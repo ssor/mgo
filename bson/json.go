@@ -4,7 +4,9 @@ import (
 	"bytes"
 	"encoding/base64"
 	"fmt"
-	"gopkg.in/mgo.v2/internal/json"
+
+	"github.com/ssor/mgo/internal/json"
+	// "gopkg.in/mgo.v2/internal/json"
 	"strconv"
 	"time"
 )

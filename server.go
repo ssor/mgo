@@ -33,7 +33,7 @@ import (
 	"sync"
 	"time"
 
-	"gopkg.in/mgo.v2/bson"
+	"github.com/ssor/mgo/bson"
 )
 
 // ---------------------------------------------------------------------------
@@ -110,7 +110,8 @@ func (server *mongoServer) AcquireSocket(poolLimit int, timeout time.Duration) (
 			return nil, abended, errServerClosed
 		}
 		n := len(server.unusedSockets)
-		if poolLimit > 0 && len(server.liveSockets)-n >= poolLimit {
+		// if poolLimit > 0 && len(server.liveSockets)-n >= poolLimit {
+		if poolLimit > 0 && len(server.liveSockets)+n >= poolLimit { // zqz think it's wrong
 			server.Unlock()
 			return nil, false, errPoolLimit
 		}
